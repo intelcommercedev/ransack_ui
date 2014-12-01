@@ -17,7 +17,7 @@ Ransack.predicates =
 Ransack.type_predicates = {}
 ((o, f) -> f.call o) Ransack.type_predicates, ->
   @text = @string = ['eq', 'cont', 'matches', 'start', 'end', 'present', 'in']
-  @array = ['in', 'cont']
+  @array = ['cont', 'not_cont', 'cont_any', 'not_cont_any', 'in', 'not_in']
   @boolean = ['true', 'null']
   @integer = @float = @decimal = ['eq', 'null', 'lt', 'gt', 'in']
   @date = @datetime = @time = ['eq', 'null', 'lt', 'gt']
