@@ -17,6 +17,7 @@ Ransack.predicates =
 Ransack.type_predicates = {}
 ((o, f) -> f.call o) Ransack.type_predicates, ->
   @text = @string = ['eq', 'cont', 'matches', 'start', 'end', 'present', 'in']
+  @array = ['in', 'cont']
   @boolean = ['true', 'null']
   @integer = @float = @decimal = ['eq', 'null', 'lt', 'gt', 'in']
   @date = @datetime = @time = ['eq', 'null', 'lt', 'gt']
@@ -29,6 +30,7 @@ Ransack.predicate_inputs = {}
   @eq = @gt = @lt = (type) ->
     switch type
       when 'string','text' then 'string'
+      when 'array' then 'array'
       when 'integer','float','decimal' then 'numeric'
       when 'date','datetime','time' then type
       else false # Hide for unhandled types.

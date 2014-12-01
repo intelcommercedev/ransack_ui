@@ -216,6 +216,8 @@
       # but will also allow less than and greater than.
       if column_type in ['integer', 'float', 'decimal'] && include_number_predicates
         allowed_predicates = allowed_predicates.concat(Ransack.type_predicates[column_type] || [])
+      else if column_type in ['array'] && include_number_predicates
+        allowed_predicates = Ransack.type_predicates[column_type]
 
       $.each available_predicates, (i, p) =>
         [predicate, label] = [p[0], p[1]]
